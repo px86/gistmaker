@@ -1,0 +1,42 @@
+#+TITLE: GistMaker - create github gists from local files
+#+AUTHOR: Pushkar Raj
+#+EMAIL: px86@protonmail.com
+#+DATE: [2022-12-31 Sat]
+
+=GistMaker= is a command line utility written in C++. It creates github gists from local text files.
+
+* How to build
+
+Make sure you have =conan=, =cmake=, =gcc= installed.
+
+#+begin_src shell
+  git clone https://github.com/px86/gistmaker
+  cd gistmaker
+  mkdir build
+  cd build
+  conan install ..
+  cmake ..
+  cmake --build .
+#+end_src
+
+Note: the executable is named as =gm=.
+
+* Usage
+
+Create a github personal access token, with permissions to create/delete =gists=. And export it in the =GISTMAKER_TOKEN= environment variable.
+
+#+begin_src shell
+  Usage: gistmaker [OPTIONS]
+
+  Options:
+    --help            Print this help message
+    --file, -f VAL    file to be uploaded
+    --desc, -d VAL    gist description
+    --public, -p      make gist public
+#+end_src
+
+** Example
+
+#+begin_src shell
+ gm --file ./path/to/somefile.md --public --desc "This is gist description"
+#+end_src
